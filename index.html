@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+</head>
+<body class="body">
+    <h1 class="heading"> Personalised Music Player</h1>
+    <div class="main-div">
+    <div class="main-border">
+        <div class="songName">
+            Arnold Layne
+        </div><br>
+        <div class="artist">
+            Pink Floyd
+        </div><br><br>
+        <img id="image" src="https://media.medialoper.com/wp-content/uploads/2019/05/Pink-Floyd-Arnold-Layne.jpg"><br>
+        <br><br><br>
+        <audio id="audio" src="media used - music player/ArnoldLayne.mp3"></audio>
+        <div class="music-controls">
+            <i class="fas fa-backward" id = "prev" title="Prev"></i>
+            <i class="fas fa-play play" title="Play"></i>
+            <i class="fas fa-forward" id = "fwd" title="Forward"></i>  
+        </div>
+
+    </div>
+    </div>
+    
+</body>
+<script>
+
+const img = document.getElementById("image");
+const music = document.getElementById("audio");
+const play = document.querySelector(".play");
+let playing = true
+
+playy = ()=>{
+    playing=false
+    music.play();
+    play.classList.replace("fa-play","fa-pause");
+    img.classList.add("animation");
+}
+
+pausee = ()=>{
+    playing=true
+    music.pause();
+    play.classList.replace("fa-pause","fa-play");
+    img.classList.remove("animation");
+}
+
+play.addEventListener("click",()=>{
+    if (playing){
+        playy()
+    }
+    else{
+        pausee()
+    }
+})
+
+</script>
+</html>

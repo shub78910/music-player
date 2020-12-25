@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@500&display=swap');
+
+
+.body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+/* .main-div{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    place-items: center;
+} */
+
+.heading{
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 100;
+    color: white;
+}
+
+.main-border{
+    border: 1px solid black;
+    padding: 1rem;
+    background-color:#D3D3D3;
+    margin: auto;
+    text-align: center;
+    width: 20rem;
+    height: 30rem;
+    border-radius: 1.5rem;
+    box-shadow: gray 0rem 1rem 1rem .3rem;
+}
+
+.songName{
+    font-size: 2rem;
+    font-family: 'Arimo', sans-serif;
+    text-shadow: black 0.3rem 0.9rem 2rem;
+    letter-spacing: 0.2rem;
+   
+}
+
+.artist{
+    font-size: 1.4rem;
+    font-family: 'Arimo', sans-serif;
+}
+
+#image{
+    max-width: 50%;
+    border-radius: 200%;   
+    object-fit: cover;
+}
+
+.music-controls {
+    width: 11rem;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    font-size: 1.8rem;
+    align-items: center;
+}
+
+.music-controls .play{
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 100%;
+    padding: 0.8rem 0.8rem  0.8rem  0.9rem;
+    text-align: center;
+    cursor: pointer;
+    /* margin-bottom: 0rem; */
+}
+
+.music-controls .play:hover{
+    background-color: black;
+    color: white;
+}
+
+.music-controls .fa-forward{
+    cursor: pointer;
+    opacity:0.6;
+}
+
+.music-controls .fa-backward{
+    cursor: pointer;
+    opacity:0.6;
+}
+
+.music-controls .fa-forward:hover{
+    opacity: 1;
+}
+
+.music-controls .fa-backward:hover{
+    opacity: 1;
+}
+
+.animation{
+    animation: rotateimg 5s linear infinite;
+}
+
+@keyframes rotateimg {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

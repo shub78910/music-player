@@ -29,22 +29,23 @@
     background-color:#D3D3D3;
     margin: auto;
     text-align: center;
-    width: 20rem;
+    width: 18rem;
     height: 30rem;
     border-radius: 1.5rem;
     box-shadow: gray 0rem 1rem 1rem .3rem;
 }
 
-.songName{
-    font-size: 2rem;
+#songName{
+    font-size: 1.5rem;
     font-family: 'Arimo', sans-serif;
     text-shadow: black 0.3rem 0.9rem 2rem;
     letter-spacing: 0.2rem;
+    padding-bottom: 2rem;
    
 }
 
-.artist{
-    font-size: 1.4rem;
+#artist{
+    font-size: 1.2rem;
     font-family: 'Arimo', sans-serif;
 }
 
@@ -108,3 +109,28 @@
         transform: rotate(360deg);
     }
 }
+
+
+.justifi{
+    display: flex;
+    justify-content: space-between;
+}
+
+#myProgress {
+    width: 100%;
+    background-color:white;
+    height: 1vh;
+    margin-top: 1rem;
+    padding: 0.1rem;
+    position: relative;
+    transition: width 1s linear;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+  
+#myBar{
+    width: 0%;
+    height: 1vh;
+    background-color:black;
+    border-radius: 1rem;
+  }

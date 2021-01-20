@@ -6,6 +6,7 @@
     <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/76/multiple-musical-notes_1f3b6.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
 </head>
 <body class="body">
@@ -23,8 +24,8 @@
 
         <div class="justifi">
         
-            <div id="currentTime"></div>
-            <div id="totalTime"></div>
+            <div style="font-weight: 700; letter-spacing: 0.1rem;" id="currentTime"></div>
+            <div  style="font-weight: 700; letter-spacing: 0.1rem;" id="totalTime"></div>
             </div>
     
             <div id="myProgress">
@@ -142,6 +143,7 @@ let nextsong = ()=>{
 
 music.addEventListener("timeupdate", (event)=>{
     const {currentTime,duration}=event.srcElement;
+    // console.log(event.srcElement)
 
     //this is all to print the current time on html.
 
@@ -159,6 +161,8 @@ music.addEventListener("timeupdate", (event)=>{
     }
     // currTime.textContent = `${cur_min}:${cur_sec}`
 
+
+
     //This all is for putting the duration of the song in html.
     let min = Math.floor (duration/60)
     let sec=Math.floor(duration%60)
@@ -172,10 +176,12 @@ music.addEventListener("timeupdate", (event)=>{
     }
     // console.log(Math.floor(currentTime),min,sec)
 
+
     //This is for changing the width of the progress bar.
     let percentTime = (currentTime/duration)*100
     myBar.style.width = `${percentTime}%`
 })
+
 
 //To go to next song when song ends
 
@@ -187,9 +193,9 @@ myProgress.addEventListener("click",(event)=>{
 
 
     let move_prog =Math.floor ((event.offsetX/event.srcElement.offsetWidth)*duration);
-    console.log(move_prog)
-    console.log(event.offsetX)
-    console.log(event.srcElement.offsetWidth)
+    // console.log(move_prog)
+    // console.log(event.offsetX)
+    // console.log(event.srcElement.offsetWidth)
     music.currentTime=move_prog;
 })
 
@@ -200,6 +206,7 @@ Forward.addEventListener("click", nextsong)
 //CAUTION! THERE IS A PROBLEM WITH OFFSET WIDTH OT CLIENT WIDTH.
 // WHENEVER WE TRY TO GO BACK IT CHANGES AUTOMATICLAYY 
 // FIND SOLUTION FOR THAT!
+
 
 
 //This was how i tried to make the progress bar.
@@ -231,4 +238,13 @@ Forward.addEventListener("click", nextsong)
 <!-- cold song img = "https://images.genius.com/0a0b62ad44af0f7f92bed1b757eb8983.960x960x1.jpg"
 breaking the habit song img = "https://s2.dmcdn.net/v/3-DM91LwWuMJSeGb7/x1080"""""""-->
 
+
+
+
+
+
+<!-- 
+// favorite passtime is to go to small websites or projects, and look into the console
+// to see if the dev has any console logs left there by mistake, and then pass judgements 
+// of how unprofessional the dev is. lol  -->
 

@@ -1,238 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/76/multiple-musical-notes_1f3b6.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+    <link rel="icon"
+        href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/76/multiple-musical-notes_1f3b6.png"
+        type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" />
 </head>
-<body class="body">
+
+<body>
     <h1 class="heading"> Personalised Music Player</h1>
-    <div class="main-border">
+    <div class="flexx">
+        <div class="main-border">
 
-        <img id="image" src="https://media.medialoper.com/wp-content/uploads/2019/05/Pink-Floyd-Arnold-Layne.jpg"><br><br>
-        <div id="songName">
-            Arnold Layne
-        </div>
-        <div id="artist">
-            Pink Floyd
-        </div><br>
-        <audio id="audio" src="media used - music player/ArnoldLayne.mp3"></audio>
-
-        <div class="justifi">
-        
-            <div style="font-weight: 700; letter-spacing: 0.1rem;" id="currentTime"></div>
-            <div  style="font-weight: 700; letter-spacing: 0.1rem;" id="totalTime"></div>
+            <img id="image"
+                src="https://media.medialoper.com/wp-content/uploads/2019/05/Pink-Floyd-Arnold-Layne.jpg"><br><br>
+            <div id="songName">
+                Arnold Layne
             </div>
-    
+            <div id="artist">
+                Pink Floyd
+            </div><br>
+            <audio id="audio" src="media used - music player/ArnoldLayne.mp3"></audio>
+
+            <div class="justifi">
+
+                <div style="font-weight: 700; letter-spacing: 0.1rem;" id="currentTime"></div>
+                <div style="font-weight: 700; letter-spacing: 0.1rem;" id="totalTime"></div>
+            </div>
+
             <div id="myProgress">
                 <div id="myBar"></div>
             </div><br><br>
-    
 
-        <div class="music-controls">
-            <i class="fas fa-backward" id = "prev" title="Prev"></i>
-            <i class="fas fa-play play" title="Play"></i>
-            <i class="fas fa-forward" id = "fwd" title="Forward"></i>  
+
+            <div class="music-controls">
+                <i class="fas fa-backward" id="prev" title="Prev"></i>
+                <i class="fas fa-play play" title="Play"></i>
+                <i class="fas fa-forward" id="fwd" title="Forward"></i>
+            </div>
+        </div>
+
+        <div>
+            <h3>Choose what to listen.</h3>
+            <div class="list_of_songs"></div>
         </div>
     </div>
-    
+
+
+
+
+
 </body>
-<script>
+<script src="index.js"></script>
 
-const img = document.getElementById("image");
-const music = document.getElementById("audio");
-const play = document.querySelector(".play");
-const songName = document.getElementById("songName");
-const artist = document.getElementById("artist");
-const Prev = document.getElementById("prev");
-const Forward = document.getElementById("fwd");
-const currTime = document.getElementById("currentTime")
-const totTime = document.getElementById("totalTime")
-let myBar = document.getElementById("myBar")
-let myProgress = document.getElementById("myProgress")
-
-songlist = [
-{
-    name: "Arnold Layne",
-    audio:"media used - music player/ArnoldLayne.mp3",
-    artist: "Pink Floyd",
-    img:"https://media.medialoper.com/wp-content/uploads/2019/05/Pink-Floyd-Arnold-Layne.jpg"
-      
-},
-
-{
-    name:"Cold Cold Cold",
-    audio: "media used - music player/Cage The Elephant - Ain t No Rest For The Wicked.mp3",
-    artist: "Cage the Elephant" ,
-    img:"https://images.genius.com/0a0b62ad44af0f7f92bed1b757eb8983.960x960x1.jpg"
-},
-
-{
-    name: "Breaking the Habit",
-    audio: "media used - music player/BreakingTheHabit.mp3",
-    artist: "Linkin Park",
-    img:"https://upload.wikimedia.org/wikipedia/en/e/ec/Linkin_park_breaking_the_habit.png"
-}
-]
-
-
-
-let playing = true
-
-playy = ()=>{
-    playing=false
-    music.play();
-    play.classList.replace("fa-play","fa-pause");
-    img.classList.add("animation");
-    // move()
-}
-
-pausee = ()=>{
-    playing=true
-    music.pause();
-    play.classList.replace("fa-pause","fa-play");
-    img.classList.remove("animation");
-    // clearInterval(id);
-}
-
-play.addEventListener("click",()=>{
-    if (playing){
-        playy()
-    }
-    else{
-        pausee()
-    }
-    
-})
-
-
-//adding more and looping the songs
-
-
-const loadSong = (songlist)=>{
-    songName.textContent = songlist.name;
-    artist.textContent = songlist.artist;
-    music.src = songlist.audio;
-    img.src = songlist.img;
-    
-}
-
-
-index=0;
-let prevsong = ()=>{
-    if (index==0){
-        index=songlist.length
-    }
-    index=index-1;
-    loadSong(songlist[index]);
-    playy()
-    
-};
-
-let nextsong = ()=>{
-    index=(index+1)%songlist.length;
-    loadSong(songlist[index]);
-    playy()
-};
-
-//new part of adding the progress bar and time.
-
-music.addEventListener("timeupdate", (event)=>{
-    const {currentTime,duration}=event.srcElement;
-    // console.log(event.srcElement)
-
-    //this is all to print the current time on html.
-
-    let cur_min =  Math.floor (currentTime/60)
-    let cur_sec =  Math.floor (currentTime%60)
-
-    if (cur_min<10 && cur_sec<10){
-        currTime.textContent = `0${cur_min}:0${cur_sec}`
-    }
-    else if(cur_min<10 && cur_sec>=10){
-        currTime.textContent = `0${cur_min}:${cur_sec}`
-    }
-    else{
-        currTime.textContent = `${cur_min}:${cur_sec}`
-    }
-    // currTime.textContent = `${cur_min}:${cur_sec}`
-
-
-
-    //This all is for putting the duration of the song in html.
-    let min = Math.floor (duration/60)
-    let sec=Math.floor(duration%60)
-    if (duration){
-        if (min<10 && sec<10){
-        totTime.textContent = `0${min}:0${sec}`
-        }
-        else{
-            totTime.textContent = `${min}:${sec}` 
-        }
-    }
-    // console.log(Math.floor(currentTime),min,sec)
-
-
-    //This is for changing the width of the progress bar.
-    let percentTime = (currentTime/duration)*100
-    myBar.style.width = `${percentTime}%`
-})
-
-
-//To go to next song when song ends
-
-music.addEventListener("ended", nextsong);
-
-
-myProgress.addEventListener("click",(event)=>{
-    const{duration } = music;
-
-
-    let move_prog =Math.floor ((event.offsetX/event.srcElement.offsetWidth)*duration);
-    // console.log(move_prog)
-    // console.log(event.offsetX)
-    // console.log(event.srcElement.offsetWidth)
-    music.currentTime=move_prog;
-})
-
-Prev.addEventListener("click", prevsong)
-
-Forward.addEventListener("click", nextsong)
-
-//CAUTION! THERE IS A PROBLEM WITH OFFSET WIDTH OT CLIENT WIDTH.
-// WHENEVER WE TRY TO GO BACK IT CHANGES AUTOMATICLAYY 
-// FIND SOLUTION FOR THAT!
-
-
-
-//This was how i tried to make the progress bar.
-
-// var i = 0;
-// function move() {
-//   if (i == 0) {
-//     i = 1;
-//     var elem = document.getElementById("myBar");
-//     var width = 0;
-//     var id = setInterval(frame, 1000);
-//     function frame() {
-//       if (width >= 100) {
-//         clearInterval(id);
-//         i = 0;
-//       } else {
-//         width++;
-//         elem.style.width = width + "%";
-//       }
-//     }
-//   }
-// }
-
-
-
-</script>
 </html>
 
 <!-- cold song img = "https://images.genius.com/0a0b62ad44af0f7f92bed1b757eb8983.960x960x1.jpg"
@@ -247,4 +74,3 @@ breaking the habit song img = "https://s2.dmcdn.net/v/3-DM91LwWuMJSeGb7/x1080"""
 // favorite passtime is to go to small websites or projects, and look into the console
 // to see if the dev has any console logs left there by mistake, and then pass judgements 
 // of how unprofessional the dev is. lol  -->
-
